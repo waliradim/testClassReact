@@ -2,6 +2,7 @@ import React from 'react'
 import Clock from './Components/Clock'
 import ClockList from './Components/ClockList'
 import Form from './Components/Form'
+import Calculator from './Components/LiftingStateUp/Calculator'
 
 export default function App() {
 
@@ -9,9 +10,11 @@ export default function App() {
 
   return (
     <div>
-      <Clock />
+      {/* <Clock />
       <Form />
-      {/* <ClockList ara = {ara} /> */}
+      <ClockList ara = {ara} /> */}
+      <Calculator />
+
     </div>
   )
 }
