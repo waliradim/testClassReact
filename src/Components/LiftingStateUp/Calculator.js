@@ -14,23 +14,16 @@ export default class Calculator extends Component {
             scale: 'c'
         }
     }
-    handelCelsiusChange = (temperature) => {
-        this.setState({
-            scale: 'c',
-            temperature
-        })
-    };
 
-    handelFahrenheitChange = (temperature) => {
+    handelChange = (e, scale) => {
         this.setState({
-            scale: 'f',
-            temperature
+            temperature: e.target.value,
+            scale
         })
-    };
+    }
 
     render() {
-        const temperature = this.state.temperature;
-        const scale = this.state.scale;
+        const { temperature, scale } = this.state;
         const celsius = scale === 'f' ? tryConvert(temperature, toCelsius) : temperature;
         const fahrenheit = scale === 'c' ? tryConvert(temperature, toFahrenheit) : temperature;
 
@@ -39,12 +32,12 @@ export default class Calculator extends Component {
                 <TemperatureInput
                     scale='c'
                     temperature={celsius}
-                    onTemperatureChange={this.handelCelsiusChange} />
+                    onTemperatureChange={this.handelChange} />
 
                 <TemperatureInput
                     scale='f'
                     temperature={fahrenheit}
-                    onTemperatureChange={this.handelFahrenheitChange} />
+                    onTemperatureChange={this.handelChange} />
 
                 <BoilingVerdic
                     celsius={parseFloat(temperature)} />
