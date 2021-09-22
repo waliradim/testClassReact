@@ -7,6 +7,11 @@ import Child from './Components/Inheritance/Child'
 import Text from './Components/Composition/Text'
 import AddText from './Components/Composition/AddText'
 import AddBracket from './Components/Composition/AddBracket'
+import ClickCounter from './Components/HOC/ClickCounter'
+import HoverCounter from './Components/HOC/HoverCounter'
+import Counter from './Components/RenderProps/Counter'
+import ClickCounterProp from './Components/RenderProps/ClickCounter'
+import HoverCounterProp from './Components/RenderProps/HoverCounter'
 
 
 export default function App() {
@@ -21,7 +26,7 @@ export default function App() {
       <Calculator />
       <Child /> */}
 
-      <AddText>
+      {/* <AddText>
         {
           ({ addText }) => (
             <AddBracket>
@@ -29,8 +34,17 @@ export default function App() {
             </AddBracket>
           )
         }
-      </AddText>
+      </AddText> */}
 
+      {/* <ClickCounter />
+      <HoverCounter /> */}
+
+      <Counter render={(count, incrementCount) => (
+        <ClickCounterProp count={count} incrementCount={incrementCount} />
+      )} />
+      <Counter render={(count, incrementCount) => (
+        <HoverCounterProp count={count} incrementCount={incrementCount} />
+      )} />
     </div>
   )
 }
