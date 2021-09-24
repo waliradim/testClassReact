@@ -12,21 +12,27 @@ import HoverCounter from './Components/HOC/HoverCounter'
 import Counter from './Components/RenderProps/Counter'
 import ClickCounterProp from './Components/RenderProps/ClickCounter'
 import HoverCounterProp from './Components/RenderProps/HoverCounter'
+import Section from './Components/APIcontext/Section'
+import ThemeContext from './Components/APIcontext/themeContext'
 
-
-export default function App() {
+export default class App extends React.Component {
+  state = {
+    theme: 'dark'
+  }
 
   // const ara =[1,2];
 
-  return (
-    <div>
-      {/* <Clock />
+  render() {
+    const { theme } = this.state;
+    return (
+      <div>
+        {/* <Clock />
       <Form />
       <ClockList ara = {ara} />
       <Calculator />
       <Child /> */}
 
-      {/* <AddText>
+        {/* <AddText>
         {
           ({ addText }) => (
             <AddBracket>
@@ -36,16 +42,24 @@ export default function App() {
         }
       </AddText> */}
 
-      {/* <ClickCounter />
+        {/* <ClickCounter />
       <HoverCounter /> */}
 
-      <Counter render={(count, incrementCount) => (
-        <ClickCounterProp count={count} incrementCount={incrementCount} />
-      )} />
-      <Counter render={(count, incrementCount) => (
-        <HoverCounterProp count={count} incrementCount={incrementCount} />
-      )} />
-    </div>
-  )
+        {/*  <Counter>
+          {(count, incrementCount) => (
+            <ClickCounterProp count={count} incrementCount={incrementCount} />
+          )}
+        </Counter>
+        <Counter >
+          {(count, incrementCount) => (
+            <HoverCounterProp count={count} incrementCount={incrementCount} />
+          )}
+        </Counter> */}
+
+        <Section theme={theme} />
+
+      </div >
+    )
+  }
 }
 
