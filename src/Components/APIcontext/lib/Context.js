@@ -17,9 +17,10 @@ class Context {
 function createContext(value = null) {
     const context = new Context(value);
     return {
-        provider: context.provider,
-        consumer: context.consumer
-    }
+        Provider: context.Provider,
+        Consumer: context.Consumer
+
+    };
 }
 
 
