@@ -2,29 +2,27 @@ import React from 'react'
 import HoverCounter from '../RenderProps/HoverCounter'
 import Counter from '../RenderProps/Counter'
 import ThemeContext from './themeContext'
-import UseContextApi from './UseContextApi'
+import { useContext } from 'react'
+
 
 export default function Content() {
+    const context = useContext(ThemeContext);
+    const { theme, switchTheme } = context;
     return (
         <div>
             <h1>This Content from Content Component</h1>
             <Counter>
-                {(count, incrementCount) => {
-                    return <ThemeContext.Consumer>{({ theme, switchTheme }) => (
-                        <HoverCounter
-                            count={count}
-                            incrementCount={incrementCount}
-                            theme={theme}
-                            switchTheme={switchTheme}
-                        />
-                    )}
-                    </ThemeContext.Consumer>
-                }}
+                {(count, incrementCount) => (
+                    <HoverCounter
+                        count={count}
+                        incrementCount={incrementCount}
+                        theme={theme}
+                        switchTheme={switchTheme}
+                    />
+                )}
             </Counter>
-            {<ThemeContext.Consumer>
-                {({ theme, name }) => <UseContextApi theme={theme} name={name} />}
-            </ThemeContext.Consumer>}
-
-        </div>
+        </div >
     )
 }
+
+
