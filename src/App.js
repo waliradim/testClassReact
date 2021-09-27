@@ -11,29 +11,30 @@ import UseContextApi from './Components/APIcontext/UseContextApi'
 export default class App extends React.Component {
   state = {
     theme: 'light',
-    name: 'Radim'
+    name: 'Radim',
+    switchTheme: () => {
+      this.setState(({ theme }) => {
+        if (theme === 'dark') {
+          return {
+            theme: 'light'
+          }
+        } else {
+          return {
+            theme: 'dark'
+          }
+        }
+      });
+    }
   }
 
-  switchTheme = () => {
-    this.setState(({ theme }) => {
-      if (theme === 'dark') {
-        return {
-          theme: 'light'
-        }
-      } else {
-        return {
-          theme: 'dark'
-        }
-      }
-    });
-  }
+
 
   render() {
-    const { theme, name } = this.state;
+
     return (
       <div>
 
-        <ThemeContext.Provider value={{ theme: theme, name: name, switchTheme: this.switchTheme }}>
+        <ThemeContext.Provider value={this.state}>
           <Section />
         </ThemeContext.Provider>
 
