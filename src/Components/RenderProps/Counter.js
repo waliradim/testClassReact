@@ -10,7 +10,7 @@ export default class Counter extends Component {
     }
     render() {
         const { count } = this.state;
-        const { render } = this.props;
-        return render(count, this.incrementCount);
+        const { children } = this.props;
+        return children(count, this.incrementCount);
     }
 }
